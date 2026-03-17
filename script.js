@@ -152,7 +152,7 @@ btn3.onclick = () => {
   finalSentence.style.fontSize = "40px";
   finalSentence.style.textShadow = "0px 0px 10px white";
   finalSentence.innerHTML = "I hope you enjoyed the game!❤️";
-  
+  btn3.style.display = "none";
   scoreDisplay.style.display = "none";
 };
 
