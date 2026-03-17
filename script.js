@@ -40,6 +40,7 @@ const answersEl = document.getElementById("answers");
 const nextQuestionBtn = document.getElementById("next-question");
 const quizWarning = document.getElementById("quiz-warning");
 const words = ["Eid", "Mubarak", "To My Lovely Family", "I Love You all 💗"];
+const scoreDisplay = document.getElementById("score-display");
 
 let i = 0;
 let textInterval;
@@ -147,7 +148,7 @@ btn2.onclick = () => {
 /* BUTTON 3 → RESTART SEQUENCE */
 btn3.onclick = () => {
   startSequence();
-  score.style.display = "none";
+  scoreDisplay.style.display = "none";
 };
 
 /* TIMER */
@@ -365,7 +366,6 @@ nextQuestionBtn.onclick = () => {
   }else{
 
     quizContainer.style.display = "none";
-const scoreDisplay = document.getElementById("score-display");
 scoreDisplay.style.display = "block";
 scoreDisplay.innerHTML = `Your score: ${score} / ${questions.length} ❤️`; 
 scoreDisplay.style.color = "white";
