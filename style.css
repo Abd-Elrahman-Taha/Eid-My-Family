@@ -1,3 +1,4 @@
+
 body{
   margin:0;
   background:#0b0b0b;
@@ -7,6 +8,8 @@ body{
   justify-content:center;
   align-items:center;
   height:100vh;
+  flex-direction:column;
+  display: flex;
 }
 
 /* TEXT */
@@ -172,6 +175,7 @@ body{
   position: fixed;
   z-index: 10;
 }
+
 #answers{
   display: flex;
   flex-direction: column;

@@ -245,35 +245,55 @@ startSequence();
 
 const questions = [
   {
-    question: "When did we first meet?",
+    question: `من قائل هذه الجملة "ماشاء الله عليك يبني ماشاء الله " ؟`,
     answers: [
-      {text:"2020", correct:false},
-      {text:"2021", correct:true},
-      {text:"2022", correct:false}
+      {text:"احمد", correct:false},
+      {text:"الابو", correct:true},
+      {text:"رؤية", correct:false}
     ]
   },
   {
-    question: "What is my favorite color?",
+    question: `عيد ميلاد ماما ؟`,
     answers: [
-      {text:"Blue", correct:false},
-      {text:"Black", correct:true},
-      {text:"Green", correct:false}
+      {text:"10-10", correct:false},
+      {text:"11-10", correct:true},
+      {text:"12-10", correct:false}
     ]
   },
   {
-    question: "Who is my favorite person?",
+    question: `معنى كلمة امتزاززز ؟`,
     answers: [
-      {text:"You ❤️", correct:true},
-      {text:"My friend", correct:false},
-      {text:"Nobody", correct:false}
+      {text:"اختزال", correct:true},
+      {text:"اكسدة", correct:false},
+      {text:"امتصاص", correct:false}
     ]
   }
+  ,
+  {
+    question: `مين الابن المفضل ؟`,
+    answers: [
+      {text:"بودي", correct:true},
+      {text:"بودازا", correct:true},
+      {text:"البودزز", correct:true}
+    ]
+  }
+  ,
+  {
+    question: `مين اجمد حد في الدنيا ؟`,
+    answers: [
+      {text:"بودي", correct:true},
+      {text:"بودازا", correct:true},
+      {text:"البودزز", correct:true}
+    ]
+  }
+  
 ];
 
 let currentQuestion = 0;
 let score = 0;
 let selected = false;
-
+nextQuestionBtn.style.backgroundColor = "#ff1f4b";
+startQuizBtn.style.backgroundColor = "#ff1f4b";
 startQuizBtn.onclick = () => {
 
   startQuizBtn.style.display = "none";
@@ -319,24 +339,27 @@ function selectAnswer(button, correct){
   selected = true;
 
   const buttons = answersEl.children;
+  const question = questions[currentQuestion];
+
+  // كل الإجابات الصحيحة
+  const correctAnswers = question.answers
+      .filter(a => a.correct)
+      .map(a => a.text);
 
   for(let btn of buttons){
+
     btn.disabled = true;
 
-    const answerText = btn.innerText;
-
-    const question = questions[currentQuestion];
-
-    const correctAnswer = question.answers.find(a => a.correct).text;
-
-    if(btn.innerText === correctAnswer){
+    if(correctAnswers.includes(btn.innerText)){
       btn.style.background = "green";
       btn.style.boxShadow = "0px 0px 10px green";
-      btn.style.transform = "scale(1.2)";
     }else{
       btn.style.background = "red";
       btn.style.boxShadow = "0px 0px 10px red";
-      btn.style.transform = "scale(0.9)";
+    }
+
+    if(btn === button){
+      btn.style.transform = "scale(1.2)";
     }
   }
 
@@ -346,7 +369,6 @@ function selectAnswer(button, correct){
 
   nextQuestionBtn.style.display = "inline-block";
 }
-
 nextQuestionBtn.onclick = () => {
 
   if(!selected){
