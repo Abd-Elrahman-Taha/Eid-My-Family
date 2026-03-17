@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Love</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="stars"></div>
+
+<div class="container text-center position-relative sequence-container">
+
+  <!-- TEXT -->
+  <div id="text" class="mb-4">Eid</div>
+
+  <!-- BIG HEART -->
+  <div class="big-heart mx-auto"></div>
+
+  <!-- VIDEO -->
+  <div class="ratio ratio-16x9 mx-auto w-100" style="max-width:100vw;">
+    <video id="love-video" class="w-100 h-100" style="display:none;" controls>
+      <source src="love.MOV" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- TIMER -->
+  <div id="timer" style="display:none; color:#ff1f4b; font-size:35px; margin-top:20px;"></div>
+
+  <!-- FINAL SENTENCE -->
+<div id="final-container" style="position:fixed; top:10%; left:50%; transform:translateX(-50%); width:90%; height:60%; overflow-y:auto; z-index:15; text-align:center;">
+  <div id="final-sentence"></div>
+</div>
+<div id="score-display" style="display:none; text-align:center; color:#ff1f4b; font-size:24px; margin-top:20px;"></div>
+
+  <!-- BUTTONS -->
+  <div id="button-container" class="d-flex flex-column align-items-center mt-3">
+    <button id="btn1" class="btn">Click Me ❤️</button>
+    <button id="btn2" class="btn">Click Me One More Time ❤️</button>
+    <button id="btn3" class="btn">Click Me One Last Time ❤️</button>
+  </div>
+
+</div>
+<div id="quiz-container" style="display:none; margin-top:20px; color:white;">
+  
+  <h2 id="question"></h2>
+
+  <div id="answers"></div>
+
+  <p id="quiz-warning" style="color:red; display:none;">
+    Please choose an answer first
+  </p>
+
+  <button id="next-question" class="btn" style="display:none;">
+    Next ❤️
+  </button>
+
+</div>
+
+<button id="start-quiz" class="btn " style="display:none;">
+  Start Quiz ❤️
+</button>
+<!-- MUSIC -->
+<audio id="love-song" src="music.mp3" loop></audio>
+
+<!-- MOBILE AUTOPLAY OVERLAY -->
+<div id="start-overlay" 
+     style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0b0b0b;color:white;display:flex;justify-content:center;align-items:center;z-index:1000;cursor:pointer;font-size:24px;">
+  Tap anywhere to start music 🎵
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
