@@ -107,7 +107,9 @@ body{
   border-radius:50%;
   animation:shine 2s infinite;
 }
-
+#love-video{
+  z-index: 30;
+}
 @keyframes shine{
   0%{opacity:0.2}
   50%{opacity:1}
