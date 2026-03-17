@@ -141,13 +141,18 @@ btn2.onclick = () => {
   finalSentence.style.display = "block";
     finalSentence.parentElement.scrollTop = finalSentence.parentElement.scrollHeight;
     finalSentence.style.fontSize = "25px";
-
   startQuizBtn.style.display = "inline-block";
 };
 
 /* BUTTON 3 → RESTART SEQUENCE */
 btn3.onclick = () => {
-  startSequence();
+  //startSequence();
+  finalSentence.innerHTML = "";
+  finalSentence.style.display = "block";
+  finalSentence.style.fontSize = "40px";
+  finalSentence.style.textShadow = "0px 0px 10px white";
+  finalSentence.innerHTML = "I hope you enjoyed the game!❤️";
+  
   scoreDisplay.style.display = "none";
 };
 
@@ -208,7 +213,7 @@ const timerInterval = setInterval(() => {
     ${seconds} seconds
   `;
 
-}, 1000);
+},);
 }
 function typeWriter(word, callback){
   text.innerHTML = "";
@@ -221,20 +226,6 @@ function typeWriter(word, callback){
       setTimeout(typing, 80);
     }else{
       setTimeout(callback, 1200);
-    }
-  }
-
-  typing();
-}
-function typeWriterFinal(sentence){
-  finalSentence.innerHTML = "";
-  let i = 0;
-
-  function typing(){
-    if(i < sentence.length){
-      finalSentence.innerHTML += sentence.charAt(i);
-      i++;
-      setTimeout(typing, 80);
     }
   }
 
@@ -372,33 +363,33 @@ function selectAnswer(button, correct){
 nextQuestionBtn.onclick = () => {
 
   if(!selected){
-
     quizWarning.style.display = "block";
-
     return;
-
   }
 
   currentQuestion++;
 
   if(currentQuestion < questions.length){
-
     showQuestion();
-
-  }else{
+  } 
+  else {
 
     quizContainer.style.display = "none";
-scoreDisplay.style.display = "block";
-scoreDisplay.innerHTML = `Your score: ${score} / ${questions.length} ❤️`; 
-scoreDisplay.style.color = "white";
-scoreDisplay.style.textAlign = "center";
-scoreDisplay.style.fontFamily = "sans-serif";
-scoreDisplay.style.textShadow = "0px 0px 10px white";
-scoreDisplay.style.fontSize = "30px";
-// لو عايز تخفي النص الطويل
-finalSentence.style.display = "none";
+    scoreDisplay.style.display = "block";
+    finalSentence.style.display = "none";
     btn3.style.display = "inline-block";
 
+    if(score == questions.length){
+      scoreDisplay.innerHTML = `Your score: ${score} / ${questions.length} ❤️ Winner!`;
+    } else {
+      scoreDisplay.innerHTML = `Your score: ${score} / ${questions.length} ❤️`;
+    }
+
+    scoreDisplay.style.color = "white";
+    scoreDisplay.style.textAlign = "center";
+    scoreDisplay.style.fontFamily = "sans-serif";
+    scoreDisplay.style.textShadow = "0px 0px 10px white";
+    scoreDisplay.style.fontSize = "30px";
   }
 
 };
