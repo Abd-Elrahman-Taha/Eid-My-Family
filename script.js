@@ -132,7 +132,7 @@ btn2.onclick = () => {
 و امي روح قلبي دي حتة القشطاية بتاع العيلة ♥️
 اجمل و الذ واطعم ام اللي عارفة كل حاجة عني و معاها كل اسراري و دايما بتدعمني ومبسوطة وفرحانة لمجرد فرحتنا بس
 ربنا يخليكم لينا دايما ♥️
-وطبعا بلقي تحيتي للاخرة الكرام احمد و محمد و رؤية 
+وطبعا بلقي تحيتي للاخوة الكرام احمد و محمد و رؤية 
 
 هنلعب لعبة خفيفة كدا 
 هنسأل كام سؤال عشوائي وهنشوف مين اللي هيجيب اعلى سكور او يقفل  هياخد 100ج
@@ -151,7 +151,7 @@ btn3.onclick = () => {
   finalSentence.style.display = "block";
   finalSentence.style.fontSize = "40px";
   finalSentence.style.textShadow = "0px 0px 10px white";
-  finalSentence.innerHTML = "I hope you enjoyed the game!❤️";
+  finalSentence.innerHTML = "I hope you enjoyed the game!❤️ <br> Thank you !❤️<br>";
   btn3.style.display = "none";
   scoreDisplay.style.display = "none";
 };
@@ -202,7 +202,9 @@ const timerInterval = setInterval(() => {
   timer.style.textAlign = "center";
   timer.style.fontFamily = "sans-serif";
   timer.style.textShadow = "0px 0px 10px white";
-
+  timer.style.backdropFilter = "blur(5px)";
+  timer.style.borderRadius = "10px";
+  timer.style.boxShadow = "0px 0px 10px #ff1f4b";
   timer.innerHTML = `
     Together for ❤️ <br>
     ${years} years ,
@@ -276,6 +278,47 @@ const questions = [
       {text:"بودازا", correct:true},
       {text:"البودزز", correct:true}
     ]
+  } ,
+  {
+    question: `احمد في كلية ايه ؟`,
+    answers: [
+      {text:"هندسة ", correct:false},
+      {text:"حاسبات ومعلومات", correct:false},
+      {text:"لا ندري حتى الان !", correct:true}
+    ]
+  }
+  ,
+  {
+    question: `لو اي حاجة حصلت في البيت ايه اول رد فعل هيحصل ؟`,
+    answers: [
+      {text:" هنهدى و نفكر بسرعة", correct:false},
+      {text:"احمد هيقوم يجيب المقشة والجروف", correct:true},
+      {text:"رقية هتقولك متهزرش معايا", correct:false}
+    ]
+  }, 
+  {
+    question: `ترتيب الاعمار في العيلة ؟ (ركزو!!)`,
+    answers: [
+      {text:" احمد - بودي - رؤية - البرادو - محمد", correct:true},
+      {text:"احمد  بودي - رؤية - محمد - البرادو", correct:false},
+      {text:"احمد - بودي -  البرادو  - رؤية - محمد", correct:false}
+    ]
+  }, 
+  {
+    question: `الطريق الجنوبي الشرقي بيودي على فين ؟`,
+    answers: [
+      {text:"السفرة", correct:false},
+      {text:"الحمام", correct:false},
+      {text:"اجابة عيب مش هينفع اكتبها 🤓", correct:true}
+    ]
+  }, 
+  {
+    question: `عجيك الكويز ؟` 
+    ,answers: [
+      {text:"جدا", correct:true},
+      {text:"موت التوت", correct:true},
+      {text:"جدا ربنا يخليك لينا يبودي", correct:true}
+    ]
   }
   
 ];
@@ -332,19 +375,17 @@ function selectAnswer(button, correct){
   const buttons = answersEl.children;
   const question = questions[currentQuestion];
 
-  // كل الإجابات الصحيحة
-  const correctAnswers = question.answers
-      .filter(a => a.correct)
-      .map(a => a.text);
+  question.answers.forEach((ans, index) => {
 
-  for(let btn of buttons){
+    const btn = buttons[index];
 
     btn.disabled = true;
 
-    if(correctAnswers.includes(btn.innerText)){
+    if(ans.correct){
       btn.style.background = "green";
       btn.style.boxShadow = "0px 0px 10px green";
-    }else{
+      btn.style.opacity = "1";
+    } else {
       btn.style.background = "red";
       btn.style.boxShadow = "0px 0px 10px red";
     }
@@ -352,7 +393,8 @@ function selectAnswer(button, correct){
     if(btn === button){
       btn.style.transform = "scale(1.2)";
     }
-  }
+
+  });
 
   if(correct){
     score++;
